@@ -106,7 +106,7 @@ const styles = StyleSheet.create({
     fontWeight: 'bold',
   },
   forgotPassword: {
-    marginBottom: 20,
+    marginBottom: 5,
   },
   forgotPasswordText: {
     color: '#000',
@@ -114,8 +114,8 @@ const styles = StyleSheet.create({
   },
   orText: {
     color: '#000',
-    marginBottom: 20,
     textAlign: 'center',
+    top: 3,
   },
   signupButton: {
     marginTop: 10,
