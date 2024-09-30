@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { View, Text, TextInput, StyleSheet, TouchableOpacity } from 'react-native';
+import { View, Text, TextInput, StyleSheet, TouchableOpacity, Image } from 'react-native';
 
 const LoginScreen = ({ navigation }) => {
   const [username, setUsername] = useState('');
@@ -7,6 +7,13 @@ const LoginScreen = ({ navigation }) => {
 
   return (
     <View style={styles.container}>
+      {/* Logo at the top */}
+      <Image
+        source={require('../assets/Logo.png')} // Make sure the path is correct
+        style={styles.logo}
+        resizeMode="contain"
+      />
+
       {/* Welcome and Instruction Text */}
       <Text style={styles.welcomeText}>Selamat Datang di Alifia Puri Indah</Text>
       <Text style={styles.instructionText}>Silahkan login menggunakan akun anda yang sudah didaftarkan</Text>
@@ -61,6 +68,12 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
     padding: 20,
     backgroundColor: '#fff',
+  },
+  logo: {
+    width: 150, // Adjust to your logo size
+    height: 130, // Adjust to your logo size
+    top: 25,
+    right: 30,
   },
   welcomeText: {
     fontSize: 32,
