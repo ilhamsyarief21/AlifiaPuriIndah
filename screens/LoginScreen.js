@@ -1,6 +1,5 @@
-// screens/LoginScreen.js
 import React, { useState } from 'react';
-import { View, Button, Text, TextInput, StyleSheet, TouchableOpacity } from 'react-native';
+import { View, Button, Text, TextInput, StyleSheet, TouchableOpacity, Image } from 'react-native';
 
 const LoginScreen = ({ navigation }) => {
   const [username, setUsername] = useState('');
@@ -8,13 +7,25 @@ const LoginScreen = ({ navigation }) => {
 
   return (
     <View style={styles.container}>
-      <Text style={styles.title}>Login Screen</Text>
+      {/* Logo at the top */}
+      {/* <Image
+        source={require('./assets/Logo.png')} // replace with your logo path
+        style={styles.logo}
+        resizeMode="contain"
+      /> */}
+      
+      <Text style={styles.welcomeText}>Selamat Datang di Alifia Puri Indah</Text>
+      <Text style={styles.instructionText}>Silahkan login menggunakan akun anda yang sudah didaftarkan</Text>
+      
+      {/* Username Input */}
       <TextInput
         style={styles.input}
         placeholder="Username"
         value={username}
         onChangeText={setUsername}
       />
+
+      {/* Password Input */}
       <TextInput
         style={styles.input}
         placeholder="Password"
@@ -22,20 +33,25 @@ const LoginScreen = ({ navigation }) => {
         onChangeText={setPassword}
         secureTextEntry
       />
+      
+      {/* Login Button */}
+      <TouchableOpacity style={styles.loginButton} onPress={() => {
+        console.log("Login pressed with", { username, password });
+        navigation.navigate('Home');
+      }}>
+        <Text style={styles.loginButtonText}>Masuk</Text>
+      </TouchableOpacity>
+      
+      {/* Forgot Password */}
       <TouchableOpacity style={styles.forgotPassword}>
         <Text style={styles.forgotPasswordText}>Lupa Password?</Text>
       </TouchableOpacity>
-      <Button
-        title="Login"
-        onPress={() => {
-          // Implement login logic here
-          console.log("Login pressed with", { username, password });
-          navigation.navigate('Home');
-        }}
-        color="#007BFF" // Optional: Change button color
-      />
+      
+      <Text style={styles.orText}>Atau</Text>
+
+      {/* Signup Button */}
       <TouchableOpacity style={styles.signupButton} onPress={() => navigation.navigate('Signup')}>
-        <Text style={styles.signupButtonText}>Belum punya akun? Daftar di sini</Text>
+        <Text style={styles.signupButtonText}>Belum Punya Akun? Daftar</Text>
       </TouchableOpacity>
     </View>
   );
@@ -47,32 +63,67 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
     alignItems: 'center',
     padding: 20,
-    backgroundColor: '#f8f8f8', // Optional: Background color
+    backgroundColor: '#fff', // White background
   },
-  title: {
-    fontSize: 24,
-    marginBottom: 20,
+  logo: {
+    width: 150, // Adjust to your logo size
+    height: 100, // Adjust to your logo size
+    marginBottom: 30,
+  },
+  welcomeText: {
+    fontSize: 32,
+    fontWeight: 'bold',
+    marginBottom: 12,
+    textAlign: 'left',
+    right: 2,
+  },
+  instructionText: {
+    fontSize: 15,
+    marginBottom: 12,
+    textAlign: 'left',
+    color: '#888', // Light gray text for instruction
   },
   input: {
     width: '100%',
-    padding: 15,
+    padding: 12,
     marginBottom: 15,
     borderWidth: 1,
     borderColor: '#ccc',
-    borderRadius: 5,
+    borderRadius: 15, // Rounded edges
+    fontSize: 16,
+  },
+  loginButton: {
+    width: '100%',
+    backgroundColor: '#000', // Black button
+    paddingVertical: 15,
+    borderRadius: 30, // Rounded edges
+    alignItems: 'center',
+    marginBottom: 20,
+  },
+  loginButtonText: {
+    color: '#fff',
+    fontSize: 16,
+    fontWeight: 'bold',
   },
   forgotPassword: {
     marginBottom: 20,
   },
   forgotPasswordText: {
-    color: '#007BFF',
+    color: '#000', // Black text for link
+    textAlign: 'center',
+  },
+  orText: {
+    color: '#000',
+    marginBottom: 20,
+    textAlign: 'center',
   },
   signupButton: {
-    marginTop: 20,
+    marginTop: 10,
   },
   signupButtonText: {
-    color: '#007BFF',
+    color: '#000', // Black text for link
     textAlign: 'center',
+    fontWeight: 'bold',
   },
 });
 
