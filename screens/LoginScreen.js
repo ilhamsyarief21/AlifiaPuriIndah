@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { View, Button, Text, TextInput, StyleSheet, TouchableOpacity, Image } from 'react-native';
+import { View, Text, TextInput, StyleSheet, TouchableOpacity } from 'react-native';
 
 const LoginScreen = ({ navigation }) => {
   const [username, setUsername] = useState('');
@@ -7,33 +7,31 @@ const LoginScreen = ({ navigation }) => {
 
   return (
     <View style={styles.container}>
-      {/* Logo at the top */}
-      {/* <Image
-        source={require('./assets/Logo.png')} // replace with your logo path
-        style={styles.logo}
-        resizeMode="contain"
-      /> */}
-      
+      {/* Welcome and Instruction Text */}
       <Text style={styles.welcomeText}>Selamat Datang di Alifia Puri Indah</Text>
       <Text style={styles.instructionText}>Silahkan login menggunakan akun anda yang sudah didaftarkan</Text>
-      
-      {/* Username Input */}
-      <TextInput
-        style={styles.input}
-        placeholder="Username"
-        value={username}
-        onChangeText={setUsername}
-      />
 
-      {/* Password Input */}
-      <TextInput
-        style={styles.input}
-        placeholder="Password"
-        value={password}
-        onChangeText={setPassword}
-        secureTextEntry
-      />
-      
+      {/* Username Input with Label */}
+      <View style={styles.inputContainer}>
+        <Text style={styles.inputLabel}>Username</Text>
+        <TextInput
+          style={styles.input}
+          value={username}
+          onChangeText={setUsername}
+        />
+      </View>
+
+      {/* Password Input with Label */}
+      <View style={styles.inputContainer}>
+        <Text style={styles.inputLabel}>Password</Text>
+        <TextInput
+          style={styles.input}
+          value={password}
+          onChangeText={setPassword}
+          secureTextEntry
+        />
+      </View>
+
       {/* Login Button */}
       <TouchableOpacity style={styles.loginButton} onPress={() => {
         console.log("Login pressed with", { username, password });
@@ -41,12 +39,12 @@ const LoginScreen = ({ navigation }) => {
       }}>
         <Text style={styles.loginButtonText}>Masuk</Text>
       </TouchableOpacity>
-      
+
       {/* Forgot Password */}
       <TouchableOpacity style={styles.forgotPassword}>
         <Text style={styles.forgotPasswordText}>Lupa Password?</Text>
       </TouchableOpacity>
-      
+
       <Text style={styles.orText}>Atau</Text>
 
       {/* Signup Button */}
@@ -61,14 +59,8 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     justifyContent: 'center',
-    alignItems: 'center',
     padding: 20,
-    backgroundColor: '#fff', // White background
-  },
-  logo: {
-    width: 150, // Adjust to your logo size
-    height: 100, // Adjust to your logo size
-    marginBottom: 30,
+    backgroundColor: '#fff',
   },
   welcomeText: {
     fontSize: 32,
@@ -81,14 +73,22 @@ const styles = StyleSheet.create({
     fontSize: 15,
     marginBottom: 12,
     textAlign: 'left',
-    color: '#888', // Light gray text for instruction
+    color: '#888',
+  },
+  inputContainer: {
+    width: '100%',
+    marginBottom: 15,
+  },
+  inputLabel: {
+    fontSize: 16,
+    marginBottom: 5,
+    color: '#000', // Black text for the label
   },
   input: {
     width: '100%',
     padding: 12,
-    marginBottom: 15,
     borderWidth: 1,
-    borderColor: '#ccc',
+    borderColor: '#000', // Black border
     borderRadius: 15, // Rounded edges
     fontSize: 16,
   },
@@ -109,7 +109,7 @@ const styles = StyleSheet.create({
     marginBottom: 20,
   },
   forgotPasswordText: {
-    color: '#000', // Black text for link
+    color: '#000',
     textAlign: 'center',
   },
   orText: {
@@ -121,7 +121,7 @@ const styles = StyleSheet.create({
     marginTop: 10,
   },
   signupButtonText: {
-    color: '#000', // Black text for link
+    color: '#000',
     textAlign: 'center',
     fontWeight: 'bold',
   },
