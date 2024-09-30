@@ -77,7 +77,7 @@ const styles = StyleSheet.create({
   },
   welcomeText: {
     fontSize: 32,
-    fontWeight: 'bold',
+    fontFamily: 'Poppins-SemiBold',
     marginBottom: 12,
     textAlign: 'left',
     right: 2,
@@ -87,6 +87,7 @@ const styles = StyleSheet.create({
     marginBottom: 12,
     textAlign: 'left',
     color: '#888',
+    fontFamily: 'Poppins-Regular'
   },
   inputContainer: {
     width: '100%',
@@ -96,6 +97,7 @@ const styles = StyleSheet.create({
     fontSize: 16,
     marginBottom: 5,
     color: '#000', // Black text for the label
+     fontFamily: 'Poppins-Regular'
   },
   input: {
     width: '100%',
@@ -124,11 +126,13 @@ const styles = StyleSheet.create({
   forgotPasswordText: {
     color: '#000',
     textAlign: 'center',
+    fontFamily: 'Poppins-SemiBold'
   },
   orText: {
     color: '#000',
     textAlign: 'center',
     top: 3,
+    fontFamily: 'Poppins-SemiBold'
   },
   signupButton: {
     marginTop: 10,
@@ -136,7 +140,7 @@ const styles = StyleSheet.create({
   signupButtonText: {
     color: '#000',
     textAlign: 'center',
-    fontWeight: 'bold',
+    fontFamily: 'Poppins-SemiBold'
   },
 });
 
