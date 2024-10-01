@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { View, Text, TextInput, StyleSheet, TouchableOpacity, Image } from 'react-native';
+import { widthPercentageToDP as wp, heightPercentageToDP as hp } from 'react-native-responsive-screen'; // Import here
 
 const LoginScreen = ({ navigation }) => {
   const [username, setUsername] = useState('');
@@ -108,13 +109,16 @@ const styles = StyleSheet.create({
     fontSize: 16,
   },
   loginButton: {
-    width: '100%',
+    width: wp('55%'), // Adjusted to match approximately 210 pixels on most screens
+    height: hp('6%'), // Adjusted to match approximately 43 pixels on most screens
     backgroundColor: '#000', // Black button
-    paddingVertical: 15,
-    borderRadius: 30, // Rounded edges
+    paddingVertical: hp('1.5%'), // To maintain vertical padding proportionate to the button height
+    borderRadius: wp('4%'), // Rounded edges
     alignItems: 'center',
-    marginBottom: 20,
+    marginBottom: hp('2%'), // Adjusted margin for responsiveness
+    alignSelf: 'center', // Centering the button
   },
+  
   loginButtonText: {
     color: '#fff',
     fontSize: 16,

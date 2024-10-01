@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { View, Text, TextInput, StyleSheet, TouchableOpacity, Image } from 'react-native';
+import { widthPercentageToDP as wp, heightPercentageToDP as hp } from 'react-native-responsive-screen';
 
 const SignupScreen = ({ navigation }) => {
   const [name, setName] = useState('');
@@ -83,67 +84,70 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     justifyContent: 'center',
-    padding: 20,
+    padding: wp('5%'),
     backgroundColor: '#fff',
   },
   logo: {
-    width: 150,
-    height: 130,
-    top: 25,
-    right: 30,
+    width: wp('40%'),
+    height: hp('15%'),
+    marginBottom: hp('2%'),
+    alignSelf: 'left',
+    top: 50,
+    right: 35,
   },
   welcomeText: {
-    fontSize: 32,
+    fontSize: wp('8%'),
     fontFamily: 'Poppins-SemiBold',
-    marginBottom: 12,
+    marginBottom: hp('2%'),
     textAlign: 'left',
-    right: 2,
+    top: 10,
   },
   instructionText: {
-    fontSize: 15,
-    marginBottom: 12,
+    fontSize: wp('4%'),
+    marginBottom: hp('2%'),
     textAlign: 'left',
     color: '#888',
-    fontFamily: 'Poppins-Regular'
+    fontFamily: 'Poppins-Regular',
   },
   inputContainer: {
     width: '100%',
-    marginBottom: 15,
+    marginBottom: hp('2%'),
   },
   inputLabel: {
-    fontSize: 16,
-    marginBottom: 5,
+    fontSize: wp('4%'),
+    marginBottom: hp('0.5%'),
     color: '#000',
-    fontFamily: 'Poppins-Regular'
+    fontFamily: 'Poppins-Regular',
   },
   input: {
     width: '100%',
-    padding: 12,
+    padding: hp('1.5%'),
     borderWidth: 2,
     borderColor: '#000',
-    borderRadius: 15,
-    fontSize: 16,
+    borderRadius: wp('4%'),
+    fontSize: wp('4%'),
   },
   signupButton: {
     width: '100%',
     backgroundColor: '#000',
-    paddingVertical: 15,
-    borderRadius: 30,
+    paddingVertical: hp('2%'),
+    borderRadius: wp('7%'),
     alignItems: 'center',
-    marginBottom: 20,
+    marginBottom: hp('2%'),
   },
   signupButtonText: {
     color: '#fff',
-    fontSize: 16,
+    fontSize: wp('4%'),
     fontWeight: 'bold',
   },
   loginButton: {
-    marginTop: 10,
+    marginTop: hp('1%'),
   },
   loginButtonText: {
     color: '#000',
     textAlign: 'center',
-    fontFamily: 'Poppins-SemiBold'
+    fontFamily: 'Poppins-SemiBold',
+    fontSize: wp('4%'),
   },
 });
 
