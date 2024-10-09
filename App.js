@@ -6,6 +6,7 @@ import { useFonts } from 'expo-font';
 import LoginScreen from './screens/LoginScreen';
 import SignupScreen from './screens/SignupScreen';
 import HomeScreen from './screens/HomeScreen';
+import ProfileScreen from './screens/ProfileScreen'; // Import ProfileScreen
 
 const Stack = createNativeStackNavigator();
 
@@ -37,6 +38,11 @@ export default function App() {
           name="Home"
           component={HomeScreen}
           options={{ headerShown: false }} // Hide header
+        />
+         <Stack.Screen
+          name="Profile"
+          component={ProfileScreen} // Tambahkan ProfileScreen
+          options={{ headerShown: false }} // Sembunyikan header
         />
       </Stack.Navigator>
     </NavigationContainer>

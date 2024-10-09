@@ -1,6 +1,6 @@
 // screens/HomeScreen.js
 import React, { useState, useEffect } from 'react';
-import { View, Text, TextInput, StyleSheet, Dimensions, ScrollView } from 'react-native';
+import { View, Text, TextInput, StyleSheet, Dimensions, ScrollView,TouchableOpacity } from 'react-native';
 import { Ionicons } from '@expo/vector-icons'; // Menggunakan Ionicons untuk outline
 import { widthPercentageToDP as wp, heightPercentageToDP as hp } from 'react-native-responsive-screen';
 
@@ -68,15 +68,15 @@ const HomeScreen = ({ navigation }) => {
 
       {/* Bottom Navigation */}
       <View style={styles.bottomNav}>
-        <View style={styles.navIcon}>
+        <TouchableOpacity style={styles.navIcon} onPress={() => navigation.navigate('Home')}>
           <Ionicons name="home-outline" size={24} color="black" />
-        </View>
-        <View style={styles.navIcon}>
+        </TouchableOpacity>
+        <TouchableOpacity style={styles.navIcon} onPress={() => navigation.navigate('Schedule')}>
           <Ionicons name="time-outline" size={24} color="black" />
-        </View>
-        <View style={styles.navIcon}>
+        </TouchableOpacity>
+        <TouchableOpacity style={styles.navIcon} onPress={() => navigation.navigate('Profile')}>
           <Ionicons name="person-outline" size={24} color="black" />
-        </View>
+        </TouchableOpacity>
       </View>
     </View>
   );
@@ -161,9 +161,15 @@ const styles = StyleSheet.create({
   bottomNav: {
     flexDirection: 'row',
     justifyContent: 'space-around',
-    paddingVertical: hp('2%'),
+    alignItems: 'center',
+    position: 'absolute', // Menempatkan di bawah layar
+    bottom: 0,
+    left: 0,
+    right: 0,
+    height: hp('10%'), // Tinggi untuk bottom nav
+    backgroundColor: '#f8f8f8', // Warna latar belakang
     borderTopWidth: 1,
-    borderTopColor: '#e0e0e0',
+    borderTopColor: '#ddd', // Garis batas atas
   },
   navIcon: {
     alignItems: 'center',
