@@ -93,6 +93,7 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     marginTop: hp('7%'),
     marginHorizontal: wp('5%'),
+
   },
   greeting: {
     fontWeight: 'bold',
@@ -114,6 +115,8 @@ const styles = StyleSheet.create({
     marginTop: hp('2%'),
     paddingHorizontal: wp('2%'),
     left: 60,
+    bottom: 7,
+    
   },
   searchIcon: {
     marginRight: wp('2%'),
@@ -122,6 +125,7 @@ const styles = StyleSheet.create({
     flex: 1,
     height: hp('5%'),
     fontSize: wp('4%'),
+    
   },
   newContainer: {
     width: wp('90%'), // Ukuran lebar 367px responsif
@@ -139,8 +143,9 @@ const styles = StyleSheet.create({
     fontWeight: 'bold',
   },
   gridContainer: {
-    paddingVertical: hp('2%'),
+    paddingVertical: hp('1%'),
     paddingHorizontal: wp('5%'),
+    bottom: 10,
   },
   row: {
     flexDirection: 'row',
