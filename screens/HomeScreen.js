@@ -1,6 +1,6 @@
 // screens/HomeScreen.js
 import React, { useState, useEffect } from 'react';
-import { View, Text, TextInput, StyleSheet, Dimensions, ScrollView,TouchableOpacity } from 'react-native';
+import { View, Text, TextInput, StyleSheet, Dimensions, ScrollView, TouchableOpacity } from 'react-native';
 import { Ionicons } from '@expo/vector-icons'; // Menggunakan Ionicons untuk outline
 import { widthPercentageToDP as wp, heightPercentageToDP as hp } from 'react-native-responsive-screen';
 
@@ -18,6 +18,8 @@ const HomeScreen = ({ navigation }) => {
       subscription?.remove();
     };
   }, []);
+
+  const bottomNavHeight = hp('10%'); // Tinggi bottom navigation
 
   return (
     <View style={styles.container}>
@@ -45,7 +47,10 @@ const HomeScreen = ({ navigation }) => {
       </View>
 
       {/* Content Section (ScrollView) */}
-      <ScrollView contentContainerStyle={styles.gridContainer}>
+      <ScrollView 
+        contentContainerStyle={[styles.gridContainer, { paddingBottom: bottomNavHeight }]} 
+        showsVerticalScrollIndicator={false}
+      >
         {/* New Container Below Search Bar */}
         <View style={styles.newContainer}>
           <Text style={styles.containerText}>Content Here</Text>
@@ -93,7 +98,6 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     marginTop: hp('7%'),
     marginHorizontal: wp('5%'),
-
   },
   greeting: {
     fontWeight: 'bold',
@@ -116,7 +120,6 @@ const styles = StyleSheet.create({
     paddingHorizontal: wp('2%'),
     left: 60,
     bottom: 7,
-    
   },
   searchIcon: {
     marginRight: wp('2%'),
@@ -125,7 +128,6 @@ const styles = StyleSheet.create({
     flex: 1,
     height: hp('5%'),
     fontSize: wp('4%'),
-    
   },
   newContainer: {
     width: wp('90%'), // Ukuran lebar 367px responsif
@@ -145,7 +147,7 @@ const styles = StyleSheet.create({
   gridContainer: {
     paddingVertical: hp('1%'),
     paddingHorizontal: wp('5%'),
-    bottom: 10,
+    flexGrow: 1, // Mengatur flexGrow untuk ScrollView
   },
   row: {
     flexDirection: 'row',
