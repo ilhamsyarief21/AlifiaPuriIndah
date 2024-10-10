@@ -39,11 +39,11 @@ const HomeScreen = ({ navigation }) => {
 
         {/* Search Bar dimasukkan ke dalam header */}
         <View style={styles.searchContainer}>
-          <Ionicons name="search-outline" size={20} color="gray" style={styles.searchIcon} />
+          <Ionicons name="search-outline" size={20} color="#fff" style={styles.searchIcon} />
           <TextInput
             style={styles.searchInput}
             placeholder="Search"
-            placeholderTextColor="gray"
+            placeholderTextColor="#fff"
           />
         </View>
       </View>
@@ -121,14 +121,17 @@ const styles = StyleSheet.create({
   searchContainer: {
     flexDirection: 'row',
     alignItems: 'center',
-    backgroundColor: '#f0f0f0',
     borderRadius: 10,
-    width: wp('69%'), // Lebar responsif 80% dari lebar layar
+    width: wp('69%'), // Lebar responsif 69% dari lebar layar
     height: 40, // Tinggi tetap
     marginTop: hp('2%'),
     paddingHorizontal: wp('4%'), // Padding dalam search bar
     alignSelf: 'center', // Mengatur posisi search bar agar berada di tengah horizontal
+    borderWidth: 2.2, // Ketebalan border
+    borderColor: '#fff', // Warna border putih
+    backgroundColor: 'transparent', // Menghilangkan background agar hanya border yang terlihat
   },
+  
   
   searchIcon: {
     marginRight: wp('2%'),
@@ -136,6 +139,7 @@ const styles = StyleSheet.create({
   searchInput: {
     flex: 1,
     fontSize: wp('4%'),
+    
   },
   newContainer: {
     width: wp('90%'), // Ukuran lebar 367px responsif
