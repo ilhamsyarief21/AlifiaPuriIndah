@@ -23,27 +23,29 @@ const HomeScreen = ({ navigation }) => {
 
   return (
     <View style={styles.container}>
-      {/* Header with Greeting and Icons */}
+      {/* Header with Greeting, Icons, and Search Bar */}
       <View style={styles.header}>
-        <Text style={[styles.greeting, { fontSize: wp(windowDimensions.width > windowDimensions.height ? '4%' : '5%') }]}>
-          Hai, Ilham
-        </Text>
+        <View style={styles.headerTop}>
+          <Text style={[styles.greeting, { fontSize: wp(windowDimensions.width > windowDimensions.height ? '4%' : '5%') }]}>
+            Hai, Ilham
+          </Text>
 
-        {/* Icons on the right */}
-        <View style={styles.iconsContainer}>
-          <Ionicons name="notifications-outline" size={24} color="black" style={styles.icon} />
-          <Ionicons name="heart-outline" size={24} color="black" style={styles.icon} />
+          {/* Icons on the right */}
+          <View style={styles.iconsContainer}>
+            <Ionicons name="heart-outline" size={24} color="white" style={styles.icon} />
+            <Ionicons name="notifications-outline" size={24} color="white" style={styles.icon} />
+          </View>
         </View>
-      </View>
 
-      {/* Search Bar */}
-      <View style={styles.searchContainer}>
-        <Ionicons name="search-outline" size={20} color="gray" style={styles.searchIcon} />
-        <TextInput
-          style={styles.searchInput}
-          placeholder="Search"
-          placeholderTextColor="gray"
-        />
+        {/* Search Bar dimasukkan ke dalam header */}
+        <View style={styles.searchContainer}>
+          <Ionicons name="search-outline" size={20} color="gray" style={styles.searchIcon} />
+          <TextInput
+            style={styles.searchInput}
+            placeholder="Search"
+            placeholderTextColor="gray"
+          />
+        </View>
       </View>
 
       {/* Content Section (ScrollView) */}
@@ -93,40 +95,46 @@ const styles = StyleSheet.create({
     backgroundColor: '#fff',
   },
   header: {
+    backgroundColor: '#000',  // Ubah latar belakang menjadi hitam
+    paddingVertical: hp('3%'), // Tambahkan padding atas dan bawah
+    borderBottomLeftRadius: 30,
+    borderBottomRightRadius: 30,
+    paddingHorizontal: wp('5%'), // Padding horizontal
+  },
+  headerTop: {
     flexDirection: 'row',
     justifyContent: 'space-between',
     alignItems: 'center',
-    marginTop: hp('7%'),
-    marginHorizontal: wp('5%'),
+    marginBottom: hp('2%'), // Tambahkan jarak di bawah teks agar tidak terlalu dekat dengan search bar
   },
   greeting: {
     fontWeight: 'bold',
+    color: '#fff',  // Ubah teks menjadi putih agar kontras dengan latar hitam
   },
   iconsContainer: {
     flexDirection: 'row',
   },
   icon: {
     marginLeft: wp('4%'), // Space between icons
+    color: '#fff',  // Ubah warna ikon menjadi putih
   },
   searchContainer: {
     flexDirection: 'row',
     alignItems: 'center',
     backgroundColor: '#f0f0f0',
     borderRadius: 10,
-    width: 260, // Ukuran lebar 232px
-    height: 40, // Ukuran tinggi 22px
-    marginHorizontal: wp('5%'),
+    width: wp('69%'), // Lebar responsif 80% dari lebar layar
+    height: 40, // Tinggi tetap
     marginTop: hp('2%'),
-    paddingHorizontal: wp('2%'),
-    left: 60,
-    bottom: 7,
+    paddingHorizontal: wp('4%'), // Padding dalam search bar
+    alignSelf: 'center', // Mengatur posisi search bar agar berada di tengah horizontal
   },
+  
   searchIcon: {
     marginRight: wp('2%'),
   },
   searchInput: {
     flex: 1,
-    height: hp('5%'),
     fontSize: wp('4%'),
   },
   newContainer: {
