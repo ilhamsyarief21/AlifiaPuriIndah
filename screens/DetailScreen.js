@@ -25,9 +25,7 @@ const DetailScreen = () => {
             imageStyle={styles.imageStyle}
           >
             {/* Tombol Kembali */}
-            <TouchableOpacity onPress={() => navigation.goBack()} style={styles.backButton}>
-              <Ionicons name="arrow-back-outline" size={24} color="black" />
-            </TouchableOpacity>
+            
           </ImageBackground>
         )}
         keyExtractor={item => item.id}
@@ -36,6 +34,9 @@ const DetailScreen = () => {
         showsHorizontalScrollIndicator={false}
         style={styles.flatList} // Tambahkan gaya untuk FlatList
       />
+      <TouchableOpacity onPress={() => navigation.goBack()} style={styles.backButton}>
+              <Ionicons name="arrow-back-outline" size={24} color="black" />
+      </TouchableOpacity>
 
       {/* Konten Halaman Detail */}
       <View style={styles.content}>
