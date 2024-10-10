@@ -1,25 +1,41 @@
 import React from 'react';
-import { View, Text, StyleSheet, TouchableOpacity, ImageBackground, Dimensions } from 'react-native';
-import { Ionicons } from '@expo/vector-icons'; // Import Ionicons untuk ikon kembali
-import { useNavigation } from '@react-navigation/native'; // Import useNavigation
-import { widthPercentageToDP as wp, heightPercentageToDP as hp } from 'react-native-responsive-screen'; // Import untuk ukuran responsif
+import { View, Text, StyleSheet, TouchableOpacity, ImageBackground, FlatList } from 'react-native';
+import { Ionicons } from '@expo/vector-icons';
+import { useNavigation } from '@react-navigation/native';
+import { widthPercentageToDP as wp, heightPercentageToDP as hp } from 'react-native-responsive-screen';
+
+const images = [
+  { id: '1', uri: 'https://images.unsplash.com/photo-1523755231516-e43fd2e8dca5?q=80&w=1935&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D' },
+  { id: '2', uri: 'https://images.unsplash.com/photo-1506748686214-e9df14d4d9d0?q=80&w=1935&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D' },
+  { id: '3', uri: 'https://images.unsplash.com/photo-1523755231516-e43fd2e8dca5?q=80&w=1935&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D' },
+];
 
 const DetailScreen = () => {
-  const navigation = useNavigation(); // Mengakses navigation
+  const navigation = useNavigation();
 
   return (
     <View style={styles.container}>
-      {/* Latar Belakang Gambar */}
-      <ImageBackground
-        source={{ uri: 'https://images.unsplash.com/photo-1523755231516-e43fd2e8dca5?q=80&w=1935&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D' }}
-        style={styles.imageBackground}
-        imageStyle={styles.imageStyle}
-      >
-        {/* Tombol Kembali */}
-        <TouchableOpacity onPress={() => navigation.goBack()} style={styles.backButton}>
-          <Ionicons name="arrow-back-outline" size={24} color="black" />
-        </TouchableOpacity>
-      </ImageBackground>
+      {/* Latar Belakang Gambar dengan FlatList */}
+      <FlatList
+        data={images}
+        renderItem={({ item }) => (
+          <ImageBackground
+            source={{ uri: item.uri }}
+            style={styles.imageBackground}
+            imageStyle={styles.imageStyle}
+          >
+            {/* Tombol Kembali */}
+            <TouchableOpacity onPress={() => navigation.goBack()} style={styles.backButton}>
+              <Ionicons name="arrow-back-outline" size={24} color="black" />
+            </TouchableOpacity>
+          </ImageBackground>
+        )}
+        keyExtractor={item => item.id}
+        horizontal
+        pagingEnabled
+        showsHorizontalScrollIndicator={false}
+        style={styles.flatList} // Tambahkan gaya untuk FlatList
+      />
 
       {/* Konten Halaman Detail */}
       <View style={styles.content}>
@@ -52,14 +68,17 @@ const styles = StyleSheet.create({
     top: hp('7%'), // Menggunakan tinggi responsif
     left: wp('5%'), // Menggunakan lebar responsif
   },
+  flatList: {
+    height: hp('50%'), // Pastikan tinggi FlatList teratur
+  },
   content: {
-    flex: 1,
     padding: wp('5%'), // Menggunakan lebar responsif
     alignItems: 'center',
     backgroundColor: '#f0f0f0',
     borderTopLeftRadius: 20,
     borderTopRightRadius: 20,
-    marginTop: -30, // Naikkan konten sedikit ke atas agar tidak tumpang tindih
+    marginTop: hp('-50%'), // Naikkan konten sedikit ke atas agar tidak tumpang tindih
+    flex: 1, // Pastikan konten memenuhi ruang
   },
   title: {
     fontSize: wp('6%'), // Menggunakan lebar responsif
