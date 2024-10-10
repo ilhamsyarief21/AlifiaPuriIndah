@@ -1,25 +1,34 @@
 import React, { useState } from 'react';
 import { View, Text, TextInput, StyleSheet, TouchableOpacity, Image } from 'react-native';
-import { widthPercentageToDP as wp, heightPercentageToDP as hp } from 'react-native-responsive-screen'; // Import here
+import { widthPercentageToDP as wp, heightPercentageToDP as hp } from 'react-native-responsive-screen';
 
 const LoginScreen = ({ navigation }) => {
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
 
+  const handleLogin = () => {
+    console.log("Login pressed with", { username, password });
+  
+    // Simple check for username and password
+    if (username && password) { // You can replace this with actual authentication logic
+      navigation.navigate('Main'); // Navigate to Main which contains the TabNavigator
+    } else {
+      // Handle empty fields
+      alert('Username and Password cannot be empty');
+    }
+  };
+  
+
   return (
     <View style={styles.container}>
-      {/* Logo at the top */}
       <Image
-        source={require('../assets/Logo.png')} // Make sure the path is correct
+        source={require('../assets/Logo.png')}
         style={styles.logo}
         resizeMode="contain"
       />
-
-      {/* Welcome and Instruction Text */}
       <Text style={styles.welcomeText}>Selamat Datang di Alifia Puri Indah</Text>
       <Text style={styles.instructionText}>Silahkan login menggunakan akun anda yang sudah didaftarkan</Text>
 
-      {/* Username Input with Label */}
       <View style={styles.inputContainer}>
         <Text style={styles.inputLabel}>Username</Text>
         <TextInput
@@ -29,7 +38,6 @@ const LoginScreen = ({ navigation }) => {
         />
       </View>
 
-      {/* Password Input with Label */}
       <View style={styles.inputContainer}>
         <Text style={styles.inputLabel}>Password</Text>
         <TextInput
@@ -40,22 +48,16 @@ const LoginScreen = ({ navigation }) => {
         />
       </View>
 
-      {/* Login Button */}
-      <TouchableOpacity style={styles.loginButton} onPress={() => {
-        console.log("Login pressed with", { username, password });
-        navigation.navigate('Home');
-      }}>
+      <TouchableOpacity style={styles.loginButton} onPress={handleLogin}>
         <Text style={styles.loginButtonText}>Masuk</Text>
       </TouchableOpacity>
 
-      {/* Forgot Password */}
       <TouchableOpacity style={styles.forgotPassword}>
         <Text style={styles.forgotPasswordText}>Lupa Password?</Text>
       </TouchableOpacity>
 
       <Text style={styles.orText}>Atau</Text>
 
-      {/* Signup Button */}
       <TouchableOpacity style={styles.signupButton} onPress={() => navigation.navigate('Signup')}>
         <Text style={styles.signupButtonText}>Belum Punya Akun? Daftar</Text>
       </TouchableOpacity>
@@ -71,8 +73,8 @@ const styles = StyleSheet.create({
     backgroundColor: '#fff',
   },
   logo: {
-    width: 150, // Adjust to your logo size
-    height: 130, // Adjust to your logo size
+    width: 150,
+    height: 130,
     top: 25,
     right: 30,
   },
@@ -97,28 +99,27 @@ const styles = StyleSheet.create({
   inputLabel: {
     fontSize: 16,
     marginBottom: 5,
-    color: '#000', // Black text for the label
-     fontFamily: 'Poppins-Regular'
+    color: '#000',
+    fontFamily: 'Poppins-Regular'
   },
   input: {
     width: '100%',
     padding: 12,
     borderWidth: 2,
-    borderColor: '#000', // Black border
-    borderRadius: 15, // Rounded edges
+    borderColor: '#000',
+    borderRadius: 15,
     fontSize: 16,
   },
   loginButton: {
-    width: wp('55%'), // Adjusted to match approximately 210 pixels on most screens
-    height: hp('6%'), // Adjusted to match approximately 43 pixels on most screens
-    backgroundColor: '#000', // Black button
-    paddingVertical: hp('1.5%'), // To maintain vertical padding proportionate to the button height
-    borderRadius: wp('4%'), // Rounded edges
+    width: wp('55%'),
+    height: hp('6%'),
+    backgroundColor: '#000',
+    paddingVertical: hp('1.5%'),
+    borderRadius: wp('4%'),
     alignItems: 'center',
-    marginBottom: hp('2%'), // Adjusted margin for responsiveness
-    alignSelf: 'center', // Centering the button
+    marginBottom: hp('2%'),
+    alignSelf: 'center',
   },
-  
   loginButtonText: {
     color: '#fff',
     fontSize: 16,
